@@ -1,0 +1,167 @@
+<?php 
+     header("Cache-Control: private, max-age=10800, pre-check=10800");
+     header("Pragma: private");
+     header("Expires: " . date(DATE_RFC822,strtotime("+2 day")));
+?>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
+  <link rel="icon" type="image/png" href="../assets/img/favicon.png">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <title><?php echo SITE_NAME .": ". ucfirst($this->uri->segment(1)) ." - ". ucfirst($this->uri->segment(2)) ?></title>
+  <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
+  <!-- Extra details for Live View on GitHub Pages -->
+  <!-- Canonical SEO -->
+
+  <!--     Fonts and icons     -->
+  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
+  <!-- CSS Files -->
+  <link href="<?php echo base_url().'assets/assets/css/material-dashboard-red.min.css?v=2.1.0'; ?>" rel="stylesheet" />
+  <!-- CSS Just for demo purpose, don't include it in your project -->
+
+  <!-- Bootstrap Table -->
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+  <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.5.6/css/buttons.dataTables.min.css">
+  
+</head>
+
+<body class="">
+
+  <div class="wrapper ">
+    <div class="sidebar" data-color="green" data-background-color="black" data-image="<?php echo base_url().'assets/assets/img/sidebar-2.jpg'; ?>">
+      <!--
+        Tip 1: You can change the color of the sidebar using: data-color="purple | azure | green | orange | danger"
+
+        Tip 2: you can also add an image using data-image tag
+    -->
+      <div class="logo">
+        <a href="<?php echo site_url('kawasanberikat') ?>" class="simple-text logo-mini">
+          <img src="<?php echo base_url('assets/images/logogram2.png')?>" style="height: 30px"/>
+        </a>
+        <a href="<?php echo site_url('kawasanberikat') ?>" class="simple-text logo-normal">
+          <img src="<?php echo base_url('assets/images/logotype2.png')?>" style="height: 30px"/>
+        </a>
+      </div>
+      <div class="sidebar-wrapper">
+        <div class="user">
+          <div class="photo">
+            <img src="<?php echo base_url('assets/assets/img/faces/placeholder.jpg')?>"/>
+          </div>
+          <div class="user-info">
+            <a data-toggle="collapse" href="#collapseExample" class="username">
+              <span>
+                <?php echo $this->session->userdata('nama'); ?>
+                <b class="caret"></b>
+              </span>
+            </a>
+            <div class="collapse" id="collapseExample">
+              <ul class="nav">
+                <li class="nav-item">
+                  <a class="nav-link" href="<?php echo site_url('kawasanberikat/profil') ?>">
+                    <span class="sidebar-mini"> MP </span>
+                    <span class="sidebar-normal"> My Profile </span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <ul class="nav">
+          <li class="nav-item active ">
+            <a class="nav-link" href="<?php echo site_url('kawasanberikat/') ?>">
+              <i class="material-icons">dashboard</i>
+              <p> Dashboard </p>
+            </a>
+          </li>
+          <li class="nav-item ">
+            <a class="nav-link" data-toggle="collapse" href="#pagesExamples">
+              <i class="material-icons">search</i>
+              <p> Data Jaminan
+                <b class="caret"></b>
+              </p>
+            </a>
+            <div class="collapse" id="pagesExamples">
+              <ul class="nav">
+                <li class="nav-item ">
+                  <a class="nav-link" href="<?php echo site_url('kawasanberikat/list_izin') ?>">
+                    <span class="sidebar-mini"> DP </span>
+                    <span class="sidebar-normal">Data Perizinan</span>
+                  </a>
+                </li>
+                <li class="nav-item ">
+                  <a class="nav-link" href="<?php echo site_url('kawasanberikat/list_jaminan') ?>">
+                    <span class="sidebar-mini"> DJ </span>
+                    <span class="sidebar-normal">Data e-Jaminan</span>
+                  </a>
+                </li>
+                <li class="nav-item ">
+                  <a class="nav-link" href="<?php echo site_url('kawasanberikat/list_realisasi') ?>">
+                    <span class="sidebar-mini"> DB </span>
+                    <span class="sidebar-normal">Data e-BPJ</span>
+                  </a>
+                </li>
+                <li class="nav-item ">
+                  <a class="nav-link" href="<?php echo site_url('kawasanberikat/list_penarikan') ?>">
+                    <span class="sidebar-mini"> DR </span>
+                    <span class="sidebar-normal">Data Penarikan</span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </li>
+          <li class="nav-item ">
+            <a class="nav-link" href="<?php echo site_urL('kawasanberikat/monitoring') ?>">
+              <i class="material-icons">find_in_page</i>
+              <p> Monitoring </p>
+            </a>
+          </li>
+          <li class="nav-item ">
+            <a class="nav-link" href="<?php echo site_urL('kawasanberikat/laporan') ?>">
+              <i class="material-icons">event_note</i>
+              <p> Laporan </p>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="main-panel">
+      <!-- Navbar -->
+      <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top ">
+        <div class="container-fluid">
+          <div class="navbar-wrapper">
+            <div class="navbar-minimize">
+              <button id="minimizeSidebar" class="btn btn-just-icon btn-white btn-fab btn-round">
+                <i class="material-icons text_align-center visible-on-sidebar-regular">more_vert</i>
+                <i class="material-icons design_bullet-list-67 visible-on-sidebar-mini">view_list</i>
+              </button>
+            </div>
+            <a class="navbar-brand" href="<?php echo site_url('perbenpelaksana') ?>">Dashboard</a>
+          </div>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="navbar-toggler-icon icon-bar"></span>
+            <span class="navbar-toggler-icon icon-bar"></span>
+            <span class="navbar-toggler-icon icon-bar"></span>
+          </button>
+          <div class="collapse navbar-collapse justify-content-end">
+            <ul class="navbar-nav">
+              <li class="nav-item dropdown">
+                <a class="nav-link" href="<?php echo site_url('perbenpelaksana') ?>" id="navbarDropdownProfile" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <i class="material-icons">person</i>
+                  <p class="d-lg-none d-md-block">
+                    Account
+                  </p>
+                </a>
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownProfile">
+                  <a class="dropdown-item" href="<?php echo site_url('login/logout') ?>">Log out</a>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+      <!-- End Navbar -->
